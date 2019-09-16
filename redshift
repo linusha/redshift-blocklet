@@ -1,0 +1,18 @@
+#!/bin/sh
+case "$BLOCK_BUTTON" in
+	1)
+            if [ "$(pgrep -x redshift)" ]; then
+	    PID=$(pidof redshift);kill $PID
+	    else
+	        	redshift >/dev/null 2>/dev/null &
+	    fi
+esac
+
+if [ "$(pgrep -x redshift)" ]; then
+        TEXT="<span color=\"#dc322f\">ON</span>"
+else
+        TEXT="<span>OFF</span>"
+fi
+
+echo "$TEXT"
+
